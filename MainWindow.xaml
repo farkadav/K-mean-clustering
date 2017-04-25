@@ -1,0 +1,36 @@
+﻿<Window x:Class="kMeanClust.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kMeanClust"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open"
+                        CanExecute="Open_OnCanExecute"
+                        Executed="Open_OnExecuted"/>
+    </Window.CommandBindings>
+    <Grid MouseDown="Grid_MouseDown" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu VerticalAlignment="Top">
+            <MenuItem x:Name="_menuRun"  Header="Run" Click="Run_Click" />
+            <MenuItem x:Name="_menuClearPoints" Header="Clear points" Click="_menuClearPoints_Click" />
+            <!--<MenuItem Command="Open"/>-->
+        </Menu>
+        <Canvas x:Name="_canvasPoints" Grid.Row="1">
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleY="-1"/>
+            </Canvas.LayoutTransform>
+        </Canvas>
+        <Canvas x:Name="_canvasResults" Grid.Row="1" >
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleY="-1"/>
+            </Canvas.LayoutTransform>
+        </Canvas>
+        <TextBlock x:Name="_lblIterations" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
